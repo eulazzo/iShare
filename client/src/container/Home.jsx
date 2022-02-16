@@ -62,8 +62,8 @@ const Home = () => {
                 className="cursor-pointer"
                 onClick={() => setToggleSidebar(false)}
               />
-              <Sidebar user={user && user} closeToggle={setToggleSidebar} />
             </div>
+            <Sidebar user={user && user} closeToggle={setToggleSidebar} />
           </div>
         )}
       </div>
