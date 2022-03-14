@@ -1,3 +1,4 @@
+import { categories } from "../utils/data";
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
@@ -8,15 +9,6 @@ const isNotActiveStyle =
   "flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 easy-in-out capitalize";
 const isActiveStyle =
   "flex items-center px-5 gap-3  font-extrabold border-r-2 border-black-2  transition-all duration-200 easy-in-out capitalize";
-
-const categories = [
-  { name: "Animals" },
-  { name: "Wallpapers" },
-  { name: "Photography" },
-  { name: "Gaming" },
-  { name: "Coding" },
-  { name: "Other" },
-];
 
 const Sidebar = ({ user, closeToggle }) => {
   const handleCloseSidebar = () => closeToggle && closeToggle(false);
@@ -54,6 +46,7 @@ const Sidebar = ({ user, closeToggle }) => {
               }
               onClick={handleCloseSidebar}
             >
+              <img className="w-8 h-8 rounded-full shadow-sm" src={category.image}  alt="" />
               {category.name}
             </NavLink>
           ))}
