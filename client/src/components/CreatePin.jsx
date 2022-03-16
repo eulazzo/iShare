@@ -136,6 +136,8 @@ const CreatePin = ({ user }) => {
           </div>
         </div>
 
+        {/* TODO: Change the code bellow, not good practice. Add label etc */}
+
         <div className="flex flex-1 flex-col gap-6 lg:pl-5 mt-5 w-full">
           <input
             type="text"
@@ -180,16 +182,14 @@ const CreatePin = ({ user }) => {
                 }}
                 className="outline-none w-4/5 text-base border-b-2 border-gray-200 p-2 rounded-md cursor-pointer"
               >
-                <option
-                  value="others"
-                  className="sm:text-bg bg-white "
-                >
+                <option value="others" className="sm:text-bg bg-white ">
                   Select Category
                 </option>
                 {categories.map((item) => (
                   <option
                     className="text-base border-0 outline-none capitalize bg-white text-black "
                     value={item.name}
+                    key={item.name}
                   >
                     {item.name}
                   </option>

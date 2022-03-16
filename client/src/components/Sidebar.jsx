@@ -2,13 +2,13 @@ import { categories } from "../utils/data";
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { RiHomeFill } from "react-icons/ri";
-import { IosIosArrowForward } from "react-icons/io";
 
-import Logo from "../assets/logo.png";
+// import Logo from "../assets/logo.png";
+import Logo from "../assets/camera.svg";
 const isNotActiveStyle =
   "flex items-center px-5 gap-3 text-gray-500 hover:text-black transition-all duration-200 easy-in-out capitalize";
 const isActiveStyle =
-  "flex items-center px-5 gap-3  font-extrabold border-r-2 border-black-2  transition-all duration-200 easy-in-out capitalize";
+  " flex items-center px-5 gap-3  font-extrabold  border-r-2 border-black-2  transition-all duration-200 easy-in-out capitalize";
 
 const Sidebar = ({ user, closeToggle }) => {
   const handleCloseSidebar = () => closeToggle && closeToggle(false);
@@ -34,7 +34,7 @@ const Sidebar = ({ user, closeToggle }) => {
             <RiHomeFill />
             Home
           </NavLink>
-          <h3 className="mt-2 px-5 text-base 2xl:text-xl">
+          <h3 className="mt-2 px-5 text-base 2xl:text-xl font-medium">
             Discover Categories
           </h3>
           {categories.slice(0, categories.length - 1).map((category) => (
@@ -46,7 +46,11 @@ const Sidebar = ({ user, closeToggle }) => {
               }
               onClick={handleCloseSidebar}
             >
-              <img className="w-8 h-8 rounded-full shadow-sm" src={category.image}  alt="" />
+              <img
+                className="w-8 h-8 rounded-full shadow-sm"
+                src={category.image}
+                alt=""
+              />
               {category.name}
             </NavLink>
           ))}
@@ -54,7 +58,7 @@ const Sidebar = ({ user, closeToggle }) => {
       </div>
       {user && (
         <Link
-          className="flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
+          className="  flex my-5 mb-3 gap-2 p-2 items-center bg-white rounded-lg shadow-lg mx-3"
           onClick={handleCloseSidebar}
           to={`user-profile/${user._id}`}
         >

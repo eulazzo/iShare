@@ -11,9 +11,10 @@ import {
 import { client } from "../client";
 import MasonryLayout from "./MasonryLayout";
 import Spinner from "./Spinner";
+import { RiLogoutCircleFill } from "react-icons/ri";
 
 const activeBtnStyles =
-  "bg-red-500 text-white font-bold p-2 rounded-full w-20 outline-none";
+  "bg-red-500 text-white font-bold p-2  rounded-full w-24 outline-none ";
 const notActiveBtnStyles =
   "bg-primary mr-4 text-black font-bold p-2 rounded-full w-20 outline-none";
 
@@ -22,6 +23,7 @@ const UserProfile = () => {
   const [pins, setPins] = useState();
   const [text, setText] = useState("Created");
   const [activeBtn, setActiveBtn] = useState("created");
+  const [logoutChange, setLogoutChange] = useState(false);
   const navigate = useNavigate();
   const { userId } = useParams();
 
@@ -29,7 +31,6 @@ const UserProfile = () => {
     localStorage.getItem("user") !== "undefined"
       ? JSON.parse(localStorage.getItem("user"))
       : localStorage.clear();
-  console.log(User);
 
   useEffect(() => {
     const query = userQuery(userId);
@@ -56,7 +57,6 @@ const UserProfile = () => {
 
   const logout = () => {
     localStorage.clear();
-
     navigate("/login");
   };
 
@@ -88,11 +88,26 @@ const UserProfile = () => {
                 render={(renderProps) => (
                   <button
                     type="button"
-                    className=" bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
+                    onMouseOver={() => setLogoutChange(true)}
+                    onMouseOut={() => setLogoutChange(false)}
+                    className="flex items-center mr-2 bg-white p-2 rounded-full cursor-pointer outline-none shadow-md"
                     onClick={renderProps.onClick}
                     disabled={renderProps.disabled}
                   >
-                    <AiOutlineLogout color="red" fontSize={21} />
+                    {logoutChange ? (
+                      <RiLogoutCircleFill
+                        color="red"
+                        className="mr-1"
+                        fontSize={21}
+                      />
+                    ) : (
+                      <AiOutlineLogout
+                        color="red"
+                        className="mr-1"
+                        fontSize={21}
+                      />
+                    )}
+                    Logout
                   </button>
                 )}
                 onLogoutSuccess={logout}

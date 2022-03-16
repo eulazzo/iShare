@@ -3,7 +3,9 @@ import GoogleLogin from "react-google-login";
 import { useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import shareVideo from "../assets/share.mp4";
-import logo from "../assets/logowhite.png";
+
+// import logo from "../assets/logowhite.png";
+import logo from "../assets/whiteLogo.svg";
 
 import { client } from "../client";
 
@@ -45,6 +47,10 @@ function Login() {
           className="w-full h-full object-cover "
         />
         <div className="absolute flex flex-col justify-center items-center top-0 right-0 left-0 bottom-0 bg-blackOverlay">
+          <span className="text-white text-xl   ">
+            Share your <strong className="text-red-700">BEST MOMENT</strong>{" "}
+            with us!
+          </span>
           <div className="p-5">
             <img src={logo} alt="logo shareme" width="130px" />
           </div>

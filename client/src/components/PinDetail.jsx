@@ -18,6 +18,8 @@ const PinDetail = ({ user }) => {
   const [addingComment, setAddingComment] = useState(false);
   const { pinId } = useParams();
 
+  
+
   const addComment = () => {
     if (comment) {
       setAddingComment(true);
@@ -120,23 +122,22 @@ const PinDetail = ({ user }) => {
 
           <h2 className="mt-5 text-2xl ">Comments</h2>
           <div className="max-h-370 overflow-y-auto">
-            {pinDetail?.comments &&
-              pinDetail.comments.map((c, index) => (
-                <div
-                  className="flex gap-2 mt-5 items-center bg-white rounded-lg"
-                  key={index}
-                >
-                  <img
-                    className="w-10 h-10 rounded-full cursor-poiin"
-                    src={c?.postedBy.image}
-                    alt="user-profile"
-                  />
-                  <div className="flex flex-col">
-                    <p className="font-bold ">{c.postedBy.userName}</p>
-                    <p>{c.comment}</p>
-                  </div>
+            {pinDetail?.comments?.map((c, index) => (
+              <div
+                className="flex gap-2 mt-5 items-center bg-white rounded-lg"
+                key={index}
+              >
+                <img
+                  className="w-10 h-10 rounded-full cursor-poiin"
+                  src={c?.postedBy.image}
+                  alt="user-profile"
+                />
+                <div className="flex flex-col">
+                  <p className="font-bold ">{c.postedBy.userName}</p>
+                  <p>{c.comment}</p>
                 </div>
-              ))}
+              </div>
+            ))}
           </div>
           <div className="flex flex-wrap mt-6 gap-3 ">
             <Link to={`/user-profile/${pinDetail.postedBy?._id}`}>
@@ -164,12 +165,12 @@ const PinDetail = ({ user }) => {
         </div>
       </div>
 
-      {pins?.length>0 ? (
+      {pins?.length > 0 ? (
         <>
           <h2 className="text-center font-bold text-2x mt-8 mb-4">
             More like this
           </h2>
-          <MasonryLayout pins={pins}/>
+          <MasonryLayout pins={pins} />
         </>
       ) : (
         <Spinner message={"Loading more pins..."} />
