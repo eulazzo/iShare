@@ -24,7 +24,7 @@ const Login = () => {
       };
 
       client.createIfNotExists(doc).then(() => {
-        // navigation("/", { replace: true });
+        navigation("/", { replace: true });
       });
     } catch (error) {
       console.log({ message: error });
