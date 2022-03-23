@@ -6,32 +6,29 @@ import shareVideo from "../assets/share.mp4";
 
 // import logo from "../assets/logowhite.png";
 import logo from "../assets/whiteLogo.svg";
-
 import { client } from "../client";
 
-function Login() {
-  const navigation = useNavigate();
+const Login = () => {
   const TOKEN = process.env.REACT_APP_GOOGLE_API_TOKEN;
+  const navigation = useNavigate();
 
-  const responseGoogle = ({ profileObj }) => {
-    localStorage.setItem("user", JSON.stringify(profileObj));
+  const responseGoogle = (response) => {
+    localStorage.setItem("user", JSON.stringify(response?.profileObj));
+    try {
+      const { name, googleId, imageUrl } = response?.profileObj;
+      const doc = {
+        _id: googleId,
+        _type: "user",
+        userName: name,
+        image: imageUrl,
+      };
 
-    const { name, googleId, imageUrl } = profileObj;
-
-    const doc = {
-      _id: googleId,
-      _type: "user",
-      userName: name,
-      image: imageUrl,
-    };
-
-    client
-      .createIfNotExists(doc)
-      .then(() => {
-        navigation("/", { replace: true });
-        console.log(doc);
-      })
-      .catch((err) => console.log(err));
+      client.createIfNotExists(doc).then(() => {
+        // navigation("/", { replace: true });
+      });
+    } catch (error) {
+      console.log({ message: error });
+    }
   };
 
   return (
@@ -76,6 +73,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
