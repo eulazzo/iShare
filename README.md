@@ -34,11 +34,9 @@
 #### Click on the button below to check it out
 [![Deploy with Vercel](https://vercel.com/button)](https://ishare-moments.netlify.app/)
     
-
-
-
+    
 <p>
-Application for posting photos, like pinterest...
+Application for posting photos, comement, save images...
 </p>
  
 <p>Developed with <code>ReactJS</code>, <code>Sanity.io</code>, <code>TailwindCSS</code>  </p> 
