@@ -32,7 +32,7 @@
 
 ## Deployed On Vercel
 #### Click on the button below to check it out
-[![Deploy with Vercel](https://vercel.com/button)](https://sigma-blog.vercel.app/)
+[![Deploy with Vercel](https://vercel.com/button)](https://ishare-moments.netlify.app/)
     
 
 
